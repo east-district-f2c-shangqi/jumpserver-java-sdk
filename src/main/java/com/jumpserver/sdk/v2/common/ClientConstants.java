@@ -55,4 +55,12 @@ public final class ClientConstants {
     // luna
     public static final String LUNA_URL = "/luna/?login_to=";
 
+
+    //remote app
+    public static final String REMOTE_APP_PERMISSIONS = BASE_URL + "/perms/remote-app-permissions/";
+
+    public static final String REMOTE_APP_ID = BASE_URL + "/applications/remote-apps/{id}/";
+
+    public static final String REMOTE_APP = BASE_URL + "/applications/remote-apps/";
+
 }

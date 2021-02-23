@@ -4,10 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.jumpserver.sdk.v2.common.ActionResponse;
 import com.jumpserver.sdk.v2.common.BaseJmsService;
 import com.jumpserver.sdk.v2.common.ClientConstants;
-import com.jumpserver.sdk.v2.model.AdminUser;
-import com.jumpserver.sdk.v2.model.Asset;
-import com.jumpserver.sdk.v2.model.AssetsNode;
-import com.jumpserver.sdk.v2.model.SystemUser;
+import com.jumpserver.sdk.v2.model.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,10 +31,18 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
         return get(AssetsNode.class, ClientConstants.NODES, nodeId, "/").execute();
     }
 
+
+    public List<Asset> getAssetsByNodeId(String nodeId) {
+        checkNotNull(nodeId);
+        String url = ClientConstants.NODES_ASSETS.replace("{id}", nodeId);
+        List<Asset> assetList = get(Asset.class, url).executeList();
+        return assetList;
+    }
+
     @Override
     public ActionResponse deleteAssetsNode(String nodeId) {
         checkNotNull(nodeId);
-        return deleteWithResponse(ClientConstants.NODES, nodeId, "/").execute();
+        return deleteWithResponse(ClientConstants.NODES_ASSETS, nodeId, "/").execute();
     }
 
     @Override
@@ -80,6 +85,15 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     public AssetsNode createAssetsNodeChildren(AssetsNode node) {
         checkNotNull(node);
         return post(AssetsNode.class, ClientConstants.NODES_CHILDREN)
+                .json(JSON.toJSONString(node))
+                .execute();
+    }
+
+    @Override
+    public AssetsNode createAssetsNodeChildren(String parentNodeId, AssetsNode node) {
+        checkNotNull(node);
+        String url = ClientConstants.NODES_ID_CHILDREN.replace("{id}", parentNodeId);
+        return post(AssetsNode.class, url)
                 .json(JSON.toJSONString(node))
                 .execute();
     }
@@ -211,4 +225,41 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
                 .execute();
     }
 
+
+    @Override
+    public List<RemoteAppPermission> listRemoteAppPermissions() {
+        return get(RemoteAppPermission.class, uri(ClientConstants.REMOTE_APP_PERMISSIONS)).executeList();
+
+    }
+
+    @Override
+    public RemoteAppPermission createRemoteAppPermissions(RemoteAppPermission remoteAppPermission) {
+        checkNotNull(remoteAppPermission);
+        return post(RemoteAppPermission.class, uri(ClientConstants.REMOTE_APP_PERMISSIONS)).json(JSON.toJSONString(remoteAppPermission))
+                .execute();
+
+    }
+
+
+    @Override
+    public RemoteAppPermission updateRemoteAppPermissions(RemoteAppPermission remoteAppPermission) {
+        checkNotNull(remoteAppPermission);
+        return patch(RemoteAppPermission.class, uri(ClientConstants.REMOTE_APP_PERMISSIONS)).json(JSON.toJSONString(remoteAppPermission))
+                .execute();
+
+    }
+
+
+    @Override
+    public List<RemoteApp> listRemoteApp() {
+        return get(RemoteApp.class, uri(ClientConstants.REMOTE_APP)).executeList();
+
+    }
+
+
+    @Override
+    public RemoteApp getRemoteApp(String appId) {
+        String url = ClientConstants.REMOTE_APP_ID.replace("{id}", appId);
+        return get(RemoteApp.class, url).execute();
+    }
 }

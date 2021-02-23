@@ -1,10 +1,7 @@
 package com.jumpserver.sdk.v2.jumpserver.assets;
 
 import com.jumpserver.sdk.v2.common.ActionResponse;
-import com.jumpserver.sdk.v2.model.AdminUser;
-import com.jumpserver.sdk.v2.model.Asset;
-import com.jumpserver.sdk.v2.model.AssetsNode;
-import com.jumpserver.sdk.v2.model.SystemUser;
+import com.jumpserver.sdk.v2.model.*;
 
 import java.util.List;
 
@@ -27,8 +24,13 @@ public interface AssertsService {
 
     ActionResponse deleteAssetsNodeWithAssetCheck(String nodeId);
 
+    List<Asset> getAssetsByNodeId(String nodeId);
+
+
     //节点下的节点
     AssetsNode createAssetsNodeChildren(AssetsNode node);
+
+    AssetsNode createAssetsNodeChildren(String parentNodeId, AssetsNode node);
 
     AssetsNode updateAssetsNodeChildren(String nodeId, AssetsNode node);
 
@@ -72,5 +74,16 @@ public interface AssertsService {
     SystemUser updateSystemUserAuthInfo(SystemUser systemUser);
 
     SystemUser updateSystemUserPush(String userId);
+
+    List<RemoteAppPermission> listRemoteAppPermissions();
+
+    RemoteAppPermission createRemoteAppPermissions(RemoteAppPermission remoteAppPermission);
+
+    RemoteAppPermission updateRemoteAppPermissions(RemoteAppPermission remoteAppPermission);
+
+    List<RemoteApp> listRemoteApp();
+
+    RemoteApp getRemoteApp(String appId);
+
 
 }

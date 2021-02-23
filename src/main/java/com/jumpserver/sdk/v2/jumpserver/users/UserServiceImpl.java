@@ -47,6 +47,7 @@ public class UserServiceImpl extends BaseJmsService implements UserService {
     @Override
     public User create(User user) {
         checkNotNull(user);
+        System.out.println(JSON.toJSONString(user));
         return post(User.class, uri(ClientConstants.USERS))
                 .json(JSON.toJSONString(user))  // .entity(user)
                 .execute();

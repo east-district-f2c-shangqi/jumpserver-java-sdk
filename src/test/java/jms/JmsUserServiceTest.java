@@ -15,7 +15,8 @@ import java.util.List;
  */
 public class JmsUserServiceTest extends CommonBeforeTest {
 
-    private String userGroupId = "90b20128-c92c-4d69-9a18-68d9636b7ac1";
+//    private String userGroupId = "90b20128-c92c-4d69-9a18-68d9636b7ac5";
+    String userGroupId = "12489288-8f36-4c91-a49e-bb01be8672d6";
     private String userId = "570cd13a-84dd-4710-9385-99ea3ad69999";
 
     @Test
@@ -23,7 +24,7 @@ public class JmsUserServiceTest extends CommonBeforeTest {
         System.out.println("add userGroup::::");
         UserGroup usergroup = new UserGroup();
         usergroup.setId(userGroupId);
-        usergroup.setName("T组");
+        usergroup.setName("T5组");
         UserGroup userGroupBack = os.users().createUserGroup(usergroup);
         System.out.println(userGroupBack.getId());
         System.out.println(userGroupBack.getName());
