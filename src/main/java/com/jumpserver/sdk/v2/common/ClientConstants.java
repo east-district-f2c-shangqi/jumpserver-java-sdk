@@ -61,6 +61,6 @@ public final class ClientConstants {
 
     public static final String REMOTE_APP_ID = BASE_URL + "/applications/remote-apps/{id}/";
 
-    public static final String REMOTE_APP = BASE_URL + "/applications/remote-apps/";
+    public static final String REMOTE_APP = BASE_URL + "/applications/applications/";
 
 }
