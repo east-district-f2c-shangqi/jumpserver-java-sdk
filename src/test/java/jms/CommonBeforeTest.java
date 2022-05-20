@@ -34,9 +34,10 @@ public class CommonBeforeTest {
         ClientBuilder credentials = new ClientBuilder()
                 .endpoint(endPoint)
                 .credentials( keyId, keySecret);
-        if (StringUtils.isBlank(orgId)) {
+        if (StringUtils.isNotBlank(orgId)) {
             os = credentials.authenticate();
-        } else {
+        }
+        else {
             os = credentials.header(ClientConstants.X_JMS_ORG, orgId).authenticate();
         }
     }

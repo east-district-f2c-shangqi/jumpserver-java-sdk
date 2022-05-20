@@ -100,10 +100,11 @@ public class JmsUserServiceTest extends CommonBeforeTest {
     @Test
     public void users() {
         System.out.println("list users:::");
+        os.getHeaders().put("x-jms-org", "744b4a5b-b93a-44bc-b2a2-c8993a9c42d3");
         List<User> users = os.users().list();
         System.out.println(users.size());
         for (User user : users) {
-            System.out.println(user.getName() + " :: " + user.getEmail());
+            System.out.println(user.getUsername()+" :: "+user.getName() + " :: " + user.getEmail()+" :: "+ user.getId());
         }
     }
 

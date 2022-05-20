@@ -1,43 +1,36 @@
 package com.jumpserver.sdk.v2.model;
 
+import java.util.List;
+
 public class RemoteAppPermission {
+
+    /**
+     * id : 3fa85f64-5717-4562-b3fc-2c963f66afa6
+     * name : string
+     * category : db
+     * type : mysql
+     * is_active : true
+     * date_expired : 2022-05-17T12:59:51.005Z
+     * date_start : 2022-05-17T12:59:51.005Z
+     * comment : string
+     * users : ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+     * user_groups : ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+     * applications : ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+     * system_users : ["3fa85f64-5717-4562-b3fc-2c963f66afa6"]
+     */
+
     private String id;
-
     private String name;
-
-    private String comment;
-
+    private String category;
+    private String type;
     private boolean is_active;
-
-    private String date_start;
-
     private String date_expired;
-
-    private boolean is_valid;
-
-    private String created_by;
-
-    private String date_created;
-
+    private String date_start;
+    private String comment;
     private String[] users;
-
     private String[] user_groups;
-
-    private String[] remote_apps;
-
+    private String[] applications;
     private String[] system_users;
-
-    private Integer users_amount;
-
-    private Integer user_groups_amount;
-
-    private Integer remote_apps_amount;
-
-    private Integer system_users_amount;
-
-    private String org_id;
-
-    private String org_name;
 
     public String getId() {
         return id;
@@ -55,12 +48,20 @@ public class RemoteAppPermission {
         this.name = name;
     }
 
-    public String getComment() {
-        return comment;
+    public String getCategory() {
+        return category;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public boolean isIs_active() {
@@ -71,14 +72,6 @@ public class RemoteAppPermission {
         this.is_active = is_active;
     }
 
-    public String getDate_start() {
-        return date_start;
-    }
-
-    public void setDate_start(String date_start) {
-        this.date_start = date_start;
-    }
-
     public String getDate_expired() {
         return date_expired;
     }
@@ -87,28 +80,20 @@ public class RemoteAppPermission {
         this.date_expired = date_expired;
     }
 
-    public boolean isIs_valid() {
-        return is_valid;
+    public String getDate_start() {
+        return date_start;
     }
 
-    public void setIs_valid(boolean is_valid) {
-        this.is_valid = is_valid;
+    public void setDate_start(String date_start) {
+        this.date_start = date_start;
     }
 
-    public String getCreated_by() {
-        return created_by;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
-    }
-
-    public String getDate_created() {
-        return date_created;
-    }
-
-    public void setDate_created(String date_created) {
-        this.date_created = date_created;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String[] getUsers() {
@@ -128,11 +113,11 @@ public class RemoteAppPermission {
     }
 
     public String[] getRemote_apps() {
-        return remote_apps;
+        return applications;
     }
 
-    public void setRemote_apps(String[] remote_apps) {
-        this.remote_apps = remote_apps;
+    public void setRemote_apps(String[] applications) {
+        this.applications = applications;
     }
 
     public String[] getSystem_users() {
@@ -141,53 +126,5 @@ public class RemoteAppPermission {
 
     public void setSystem_users(String[] system_users) {
         this.system_users = system_users;
-    }
-
-    public Integer getUsers_amount() {
-        return users_amount;
-    }
-
-    public void setUsers_amount(Integer users_amount) {
-        this.users_amount = users_amount;
-    }
-
-    public Integer getUser_groups_amount() {
-        return user_groups_amount;
-    }
-
-    public void setUser_groups_amount(Integer user_groups_amount) {
-        this.user_groups_amount = user_groups_amount;
-    }
-
-    public Integer getRemote_apps_amount() {
-        return remote_apps_amount;
-    }
-
-    public void setRemote_apps_amount(Integer remote_apps_amount) {
-        this.remote_apps_amount = remote_apps_amount;
-    }
-
-    public Integer getSystem_users_amount() {
-        return system_users_amount;
-    }
-
-    public void setSystem_users_amount(Integer system_users_amount) {
-        this.system_users_amount = system_users_amount;
-    }
-
-    public String getOrg_id() {
-        return org_id;
-    }
-
-    public void setOrg_id(String org_id) {
-        this.org_id = org_id;
-    }
-
-    public String getOrg_name() {
-        return org_name;
-    }
-
-    public void setOrg_name(String org_name) {
-        this.org_name = org_name;
     }
 }

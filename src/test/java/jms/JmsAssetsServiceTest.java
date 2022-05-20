@@ -15,15 +15,15 @@ public class JmsAssetsServiceTest extends CommonBeforeTest {
 
     private String assetId = "8e83ca4b-ca16-435c-a4a4-6dc8e204ca30";
 
-    @Test
-    public void addAsset() {
-        Asset asset = new Asset();
-        asset.setId(assetId);
-        asset.setIp("192.168.20.102");
-        asset.setHostname("欧洲十国游");
-        Asset assetnew = os.assets().create(asset);
-        System.out.println(assetnew.getId());
-    }
+//    @Test
+//    public void addAsset() {
+//        Asset asset = new Asset();
+//        asset.setId(assetId);
+//        asset.setIp("192.168.20.102");
+//        asset.setHostname("欧洲十国游");
+//        Asset assetnew = os.assets().create(asset);
+//        System.out.println(assetnew.getId());
+//    }
 
     @Test
     public void getAsset() {
@@ -58,40 +58,40 @@ public class JmsAssetsServiceTest extends CommonBeforeTest {
         }
     }
 
-    @Test
-    public void updateAsset() {
-        Asset asset = new Asset();
-        asset.setId(assetId);
-        asset.setIp("192.168.20.102");
-        asset.setHostname("欧洲十一国游");
-        Asset assetnew = os.assets().update(asset);
-        System.out.println(assetnew.getId());
-    }
+//    @Test
+//    public void updateAsset() {
+//        Asset asset = new Asset();
+//        asset.setId(assetId);
+//        asset.setIp("192.168.20.102");
+//        asset.setHostname("欧洲十一国游");
+//        Asset assetnew = os.assets().update(asset);
+//        System.out.println(assetnew.getId());
+//    }
 
-    @Test
-    public void deleteAsset() {
-        ActionResponse delete = os.assets().delete(assetId);
-        System.out.println(delete);
-    }
+//    @Test
+//    public void deleteAsset() {
+//        ActionResponse delete = os.assets().delete(assetId);
+//        System.out.println(delete);
+//    }
 
     //=========================== 资产树 =============================
-    @Test
-    public void addAssetsNode() {
-        AssetsNode object = new AssetsNode();
-        object.setId(assetId);
-        object.setValue("演示工作空间-son");
-        AssetsNode objectBack = os.assets().createAssetsNode(object);
-        System.out.println(objectBack.getId());
-    }
+//    @Test
+//    public void addAssetsNode() {
+//        AssetsNode object = new AssetsNode();
+//        object.setId(assetId);
+//        object.setValue("演示工作空间-son");
+//        AssetsNode objectBack = os.assets().createAssetsNode(object);
+//        System.out.println(objectBack.getId());
+//    }
 
-    @Test
-    public void addAssetsNodeChildren() {
-        AssetsNode object = new AssetsNode();
-        object.setId(assetId);
-        object.setValue("演示工作空间-son");
-        AssetsNode objectBack = os.assets().createAssetsNodeChildren("e3ced244-5f1a-4c5f-bec4-ebd163fe1e81",object);
-        System.out.println(objectBack.getId());
-    }
+//    @Test
+//    public void addAssetsNodeChildren() {
+//        AssetsNode object = new AssetsNode();
+//        object.setId(assetId);
+//        object.setValue("演示工作空间-son");
+//        AssetsNode objectBack = os.assets().createAssetsNodeChildren("e3ced244-5f1a-4c5f-bec4-ebd163fe1e81",object);
+//        System.out.println(objectBack.getId());
+//    }
 
     @Test
     public void getAssetsNode() {
@@ -100,14 +100,14 @@ public class JmsAssetsServiceTest extends CommonBeforeTest {
         System.out.println(object);
     }
 
-    @Test
-    public void updateAssetsNode() {
-        AssetsNode object = new AssetsNode();
-        object.setId(assetId);
-        object.setValue("docker_tmp");
-        AssetsNode objectBack = os.assets().updateAssetsNode(object);
-        System.out.println(objectBack.getId());
-    }
+//    @Test
+//    public void updateAssetsNode() {
+//        AssetsNode object = new AssetsNode();
+//        object.setId(assetId);
+//        object.setValue("123");
+//        AssetsNode objectBack = os.assets().updateAssetsNode(object);
+//        System.out.println(objectBack.getId());
+//    }
 
     @Test
     public void AssetsNodes() {
@@ -121,11 +121,11 @@ public class JmsAssetsServiceTest extends CommonBeforeTest {
         }
     }
 
-    @Test
-    public void deleteAssetsNode() {
-        ActionResponse delete = os.assets().deleteAssetsNode(assetId);
-        System.out.println(delete);
-    }
+//    @Test
+//    public void deleteAssetsNode() {
+//        ActionResponse delete = os.assets().deleteAssetsNode(assetId);
+//        System.out.println(delete);
+//    }
 
 
     @Test
@@ -138,13 +138,14 @@ public class JmsAssetsServiceTest extends CommonBeforeTest {
         }
     }
 
-    @Test
-    public void createRemoteAppPermissions() {
-
-    }
+//    @Test
+//    public void createRemoteAppPermissions() {
+//
+//    }
 
     @Test
     public void listRemoteApp() {
+//        os.getHeaders().put("x-jms-org", "744b4a5b-b93a-44bc-b2a2-c8993a9c42d3");
         List<RemoteApp> list = os.assets().listRemoteApp();
         System.out.println(list.size());
         for (RemoteApp object : list) {

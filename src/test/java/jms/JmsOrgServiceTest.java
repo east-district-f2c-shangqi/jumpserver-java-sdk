@@ -1,5 +1,6 @@
 package jms;
 
+import com.alibaba.fastjson.JSON;
 import com.jumpserver.sdk.v2.common.ActionResponse;
 import com.jumpserver.sdk.v2.model.Org;
 import com.jumpserver.sdk.v2.model.OrgUsers;
@@ -12,8 +13,8 @@ import java.util.List;
  */
 public class JmsOrgServiceTest extends CommonBeforeTest{
 
-    private String orgIdTest = "48afff20-32ce-43b7-8a13-5cd750acf989";
-    private  String userId = "415041b3-650c-49fe-adef-d8e36d54844e";
+    private String orgIdTest = "744b4a5b-b93a-44bc-b2a2-c8993a9c42d3";
+    private  String userId = "f8253e75-f284-4823-b287-106e24b6c318";
 
     @Test
     public void addOrg() {
@@ -44,6 +45,7 @@ public class JmsOrgServiceTest extends CommonBeforeTest{
         List<Org> list = os.orgs().listOrg();
         System.out.println(list.size());
         for (Org object : list) {
+            System.out.println(JSON.toJSON(object.getUsers()).toString());
             System.out.println(object.getId());
             System.out.println(object.getName());
         }
@@ -67,11 +69,11 @@ public class JmsOrgServiceTest extends CommonBeforeTest{
         }
     }
 
-    @Test
-    public void deleteOrgUses() {
-        ActionResponse actionResponse = os.orgs().deleteOrgUsers(orgIdTest, userId);
-        System.out.println(actionResponse.toString());
-    }
+//    @Test
+//    public void deleteOrgUses() {
+//        ActionResponse actionResponse = os.orgs().deleteOrgUsers(orgIdTest, userId);
+//        System.out.println(actionResponse.toString());
+//    }
 
 
     @Test
@@ -91,17 +93,17 @@ public class JmsOrgServiceTest extends CommonBeforeTest{
         }
     }
 
-    @Test
-    public void deleteOrgAdmins() {
-        ActionResponse actionResponse = os.orgs().deleteOrgAdmins(orgIdTest, userId);
-        System.out.println(actionResponse.toString());
-    }
+//    @Test
+//    public void deleteOrgAdmins() {
+//        ActionResponse actionResponse = os.orgs().deleteOrgAdmins(orgIdTest, userId);
+//        System.out.println(actionResponse.toString());
+//    }
 
-    @Test
-    public void deleteOrg() {
-        ActionResponse delete = os.orgs().deleteOrg(orgId);
-        System.out.println(delete);
-    }
+//    @Test
+//    public void deleteOrg() {
+//        ActionResponse delete = os.orgs().deleteOrg(orgId);
+//        System.out.println(delete);
+//    }
 
 
 }
