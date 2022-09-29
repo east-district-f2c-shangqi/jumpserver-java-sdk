@@ -1,122 +1,137 @@
 package jms;
 
-import com.jumpserver.sdk.model.User;
-import com.jumpserver.sdk.model.Usergroup;
-import com.jumpserver.sdk.service.JmsUsersService;
-import org.junit.Before;
+import com.alibaba.fastjson.JSON;
+import com.jumpserver.sdk.v2.common.ActionResponse;
+import com.jumpserver.sdk.v2.model.User;
+import com.jumpserver.sdk.v2.model.UserGroup;
 import org.junit.Test;
 
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.List;
 
-public class JmsUserServiceTest {
+/**
+ * 用户API调用相关测试用例
+ */
+public class JmsUserServiceTest extends CommonBeforeTest {
 
+//    private String userGroupId = "90b20128-c92c-4d69-9a18-68d9636b7ac5";
+    String userGroupId = "12489288-8f36-4c91-a49e-bb01be8672d6";
+    private String userId = "570cd13a-84dd-4710-9385-99ea3ad69999";
 
-    private   JmsUsersService jmsUsersService;
-    @Before
-    public void before() {
-         jmsUsersService = new JmsUsersService("http://localhost", "admin", "admin");
+    @Test
+    public void addUserGroups() {
+        System.out.println("add userGroup::::");
+        UserGroup usergroup = new UserGroup();
+        usergroup.setId(userGroupId);
+        usergroup.setName("T5组");
+        UserGroup userGroupBack = os.users().createUserGroup(usergroup);
+        System.out.println(userGroupBack.getId());
+        System.out.println(userGroupBack.getName());
     }
 
     @Test
-    public void testGetToken() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
+    public void updateUserGroups() {
+        System.out.println("update userGroup::::");
+        UserGroup usergroup = new UserGroup();
+        usergroup.setName("X组");
+        usergroup.setId(userGroupId);
+        UserGroup userGroupBack = os.users().updateUserGroup(usergroup);
+        System.out.println(userGroupBack.getId());
+        System.out.println(userGroupBack.getName());
     }
 
     @Test
-    public void t12() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-//        String token = jmsUsersService.getToken();
-//        System.out.println(token);
+    public void userGroups() {
+        System.out.println("list userGroup::::");
+        List<UserGroup> usergroups = os.users().userGroups();
+        System.out.println(usergroups.size());
+        for (UserGroup usergroup : usergroups) {
+            System.out.println(usergroup.getName());
+        }
+    }
+
+    @Test
+    public void addUser() {
+        System.out.println("add user:::");
         User user = new User();
-        user.setUsername("王大锤");
-        user.setName("王大锤");
-        user.setEmail("wdc@qq.com");
+        user.setId(userId);
         user.setGroups(new String[]{});
-        Map<String, String> map = jmsUsersService.addUser(user);
-        System.out.println(map.toString());
+        user.setName("sdk test");
+        user.setUsername("sdk");
+        user.setEmail("sdk@fit2cloud.com");
+        user.setSource("openid");
+        try {
+            User user1 = os.users().create(user);
+            System.out.println(user1.getId());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        os.users().list().stream().map(User::getName).forEach(System.out::println);
+
+        //os.users().search("kaijun@fit2cloud.com").stream().map(User::getEmail).forEach(System.out::println);
     }
 
     @Test
-    public void t13() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
+    public void search() throws UnsupportedEncodingException {
+        System.out.println("search user:::");
+        String name = URLEncoder.encode("管理员", "UTF-8");
+//        String  name = URLEncoder.encode("admin", "UTF-8");
+        List<User> users = os.users().search(name);
+        for (User user : users) {
+            System.out.println(JSON.toJSON(user));
+        }
+    }
+
+    @Test
+    public void updateUser() {
         User user = new User();
-        user.setId("363c5584-6331-4b82-a595-e2844635f766");
-        user.setGroups(new String[]{"5a16dd3c-17d5-44de-a796-32ee442acdcf"});
-        Map<String, String> map = jmsUsersService.updateUser(user);
-        System.out.println(map.toString());
+        user.setId(userId);
+        user.setName("sdkUpdate");
+        user.setUsername("sdkUpdate");
+        user.setEmail("sdk2@fit2cloud.com");
+        User user1 = os.users().update(user);
+        System.out.println(user1.getEmail());
+        System.out.println(user1.getName());
+        System.out.println(user1.getUsername());
     }
 
     @Test
-    public void t14() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
-        User user = new User();
-        user.setId("363c5584-6331-4b82-a595-e2844635f766");
-        Map<String, String> map = jmsUsersService.deleteUser(user);
-        System.out.println(map.toString());
+    public void users() {
+        System.out.println("list users:::");
+        os.getHeaders().put("x-jms-org", "744b4a5b-b93a-44bc-b2a2-c8993a9c42d3");
+        List<User> users = os.users().list();
+        System.out.println(users.size());
+        for (User user : users) {
+            System.out.println(user.getUsername()+" :: "+user.getName() + " :: " + user.getEmail()+" :: "+ user.getId());
+        }
     }
 
     @Test
-    public void t15() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
-//        User user = new User();
-//        user.setId("9e39700c-6a7b-4f7d-9c8f-2ed52e1b8faf");
-//        Map<String, String> map = jmsUsersService.queryUser("9e39700c-6a7b-4f7d-9c8f-2ed52e1b8faf");
-        Map<String, String> map = jmsUsersService.queryUser("4947bb2b-ccc6-4d53-a3ac-21083c4b022a");
-        System.out.println(map.toString());
+    public void get() {
+        System.out.println("get user:::");
+        User user = os.users().get(userId);
+        System.out.println(user.getName() + " :: " + user.getEmail());
     }
 
     @Test
-    public void t21() {
-        Usergroup usergroup  =  new Usergroup();
-        usergroup.setName("sdk用户组");
-        Map<String, String> map = jmsUsersService.addUserGroup(usergroup);
-        System.out.println(map.toString());
-    }
-
-
-    @Test
-    public void t22() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
-        Usergroup usergroup  =  new Usergroup();
-        usergroup.setId("4eb30422-db30-4edd-807f-bd4debc1e3e2");
-        usergroup.setName("sdk用户组-modify");
-        Map<String, String> map = jmsUsersService.updateUserGroup(usergroup);
-        System.out.println(map.toString());
-    }
-
-
-    @Test
-    public void t23() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
-        Usergroup usergroup  =  new Usergroup();
-        usergroup.setId("4eb30422-db30-4edd-807f-bd4debc1e3e2");
-        Map<String, String> map = jmsUsersService.deleteUserGroup(usergroup);
-        System.out.println(map.toString());
+    public void changePassword() {
+        ActionResponse admin = os.users().changePassword(userId, "admin123");
+        System.out.println(admin);
     }
 
     @Test
-    public void t24() {
-        JmsUsersService jmsUsersService = new JmsUsersService("http://localhost:8080", "admin", "admin");
-        String token = jmsUsersService.getToken();
-        System.out.println(token);
-        User user = new User();
-        user.setId("f29eaa54-c861-4f62-8764-4e3197b2a242");
-        user.setPassword("aaa");
-        Map<String, String> map = jmsUsersService.userPasswordReset(user);
-        System.out.println(map.toString());
+    public void deleteUserGroups() {
+        System.out.println("delete userGroup::::");
+        ActionResponse actionResponse = os.users().deleteUserGroup(userGroupId);
+        System.out.println(actionResponse);
     }
 
+    @Test
+    public void deleteUser() {
+        ActionResponse delete = os.users().delete(userId);
+        System.out.println(delete.toString());
+    }
 
 }
