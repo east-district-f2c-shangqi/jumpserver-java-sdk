@@ -1,7 +1,5 @@
 package com.jumpserver.sdk.v2.model;
 
-import java.util.Date;
-
 public class AssetsPermission {
     private String id;
 
@@ -22,6 +20,8 @@ public class AssetsPermission {
     private String[] user_groups;
 
     private String[] users;
+
+    private String[] users_display;
 
     private String[] nodes;
 
@@ -109,6 +109,14 @@ public class AssetsPermission {
 
     public void setUsers(String[] users) {
         this.users = users;
+    }
+
+    public String[] getUsers_display() {
+        return users_display;
+    }
+
+    public void setUsers_display(String[] users_display) {
+        this.users_display = users_display;
     }
 
     public String[] getNodes() {
