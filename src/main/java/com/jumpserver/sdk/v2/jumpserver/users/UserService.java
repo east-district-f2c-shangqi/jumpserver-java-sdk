@@ -1,6 +1,7 @@
 package com.jumpserver.sdk.v2.jumpserver.users;
 
 import com.jumpserver.sdk.v2.common.ActionResponse;
+import com.jumpserver.sdk.v2.model.Invite;
 import com.jumpserver.sdk.v2.model.User;
 import com.jumpserver.sdk.v2.model.UserGroup;
 
@@ -29,5 +30,7 @@ public interface UserService {
     UserGroup createUserGroup(UserGroup usergroup);
 
     ActionResponse deleteUserGroup(String groupId);
+
+    Invite invitationOrgUser(Invite var1);
 
 }

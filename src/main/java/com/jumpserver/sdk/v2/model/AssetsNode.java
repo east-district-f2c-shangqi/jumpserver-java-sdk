@@ -21,6 +21,8 @@ public class AssetsNode {
 
     private String[] nodes;
 
+    private String name;
+
     public String[] getNodes() {
         return nodes;
     }
@@ -99,5 +101,13 @@ public class AssetsNode {
 
     public void setAssets_amount(int assets_amount) {
         this.assets_amount = assets_amount;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -31,6 +31,8 @@ public class AssetsPermission {
 
     private String[] actions;
 
+    private String[] assets_display;
+
     public String getId() {
         return id;
     }
@@ -149,5 +151,13 @@ public class AssetsPermission {
 
     public void setActions(String[] actions) {
         this.actions = actions;
+    }
+
+    public String[] getAssets_display() {
+        return assets_display;
+    }
+
+    public void setAssets_display(String[] assets_display) {
+        this.assets_display = assets_display;
     }
 }
