@@ -1,6 +1,7 @@
 package com.jumpserver.sdk.v2.jumpserver.assets;
 
 import com.alibaba.fastjson.JSON;
+import com.google.common.base.Preconditions;
 import com.jumpserver.sdk.v2.common.ActionResponse;
 import com.jumpserver.sdk.v2.common.BaseJmsService;
 import com.jumpserver.sdk.v2.common.ClientConstants;
@@ -32,6 +33,7 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     }
 
 
+    @Override
     public List<Asset> getAssetsByNodeId(String nodeId) {
         checkNotNull(nodeId);
         String url = ClientConstants.NODES_ASSETS.replace("{id}", nodeId);
@@ -96,6 +98,14 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
         return post(AssetsNode.class, url)
                 .json(JSON.toJSONString(node))
                 .execute();
+    }
+
+    @Override
+    public List<AssetsNode> getAssetsNodeChildren(String parentNodeId) {
+        checkNotNull(parentNodeId);
+        String url = ClientConstants.NODES_ID_CHILDREN.replace("{id}", parentNodeId);
+        return get(AssetsNode.class, url)
+                .executeList();
     }
 
     @Override

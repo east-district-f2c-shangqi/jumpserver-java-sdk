@@ -32,6 +32,8 @@ public interface AssertsService {
 
     AssetsNode createAssetsNodeChildren(String parentNodeId, AssetsNode node);
 
+    List<AssetsNode> getAssetsNodeChildren(String parentNodeId);
+
     AssetsNode updateAssetsNodeChildren(String nodeId, AssetsNode node);
 
     List<AssetsNode> listAssetsNodeChildren();
