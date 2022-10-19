@@ -1,7 +1,5 @@
 package com.jumpserver.sdk.v2.model;
 
-import java.util.List;
-
 public class RemoteAppPermission {
 
     /**
@@ -112,11 +110,11 @@ public class RemoteAppPermission {
         this.user_groups = user_groups;
     }
 
-    public String[] getRemote_apps() {
+    public String[] getApplications() {
         return applications;
     }
 
-    public void setRemote_apps(String[] applications) {
+    public void setApplications(String[] applications) {
         this.applications = applications;
     }
 
