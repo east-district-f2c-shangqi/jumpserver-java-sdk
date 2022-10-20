@@ -85,6 +85,8 @@ public interface AssertsService {
 
     List<RemoteApp> listRemoteApp();
 
+    List<RemoteApp> listRemoteAppByCategory(String category);
+
     RemoteApp getRemoteApp(String appId);
 
 

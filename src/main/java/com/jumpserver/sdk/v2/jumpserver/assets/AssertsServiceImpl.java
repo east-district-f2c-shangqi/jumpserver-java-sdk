@@ -266,6 +266,14 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
 
     }
 
+    @Override
+    public List<RemoteApp> listRemoteAppByCategory(String category) {
+        checkNotNull(category);
+        String url = ClientConstants.REMOTE_APP_CATEGORY.replace("{category}", category);
+        return get(RemoteApp.class, url).executeList();
+
+    }
+
 
     @Override
     public RemoteApp getRemoteApp(String appId) {
