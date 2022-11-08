@@ -93,6 +93,12 @@ public class UserServiceImpl extends BaseJmsService implements UserService {
     }
 
     @Override
+    public UserGroup getUserGroup(String userGroupId) {
+        checkNotNull(userGroupId);
+        return get(UserGroup.class, ClientConstants.USERGROUPS, userGroupId, "/").execute();
+    }
+
+    @Override
     public Invite invitationOrgUser(Invite invite) {
         Preconditions.checkNotNull(invite);
         return (Invite)this.post(Invite.class, new String[]{this.uri("/api/v1/users/users/invite/", new Object[0])}).json(JSON.toJSONString(invite)).execute();

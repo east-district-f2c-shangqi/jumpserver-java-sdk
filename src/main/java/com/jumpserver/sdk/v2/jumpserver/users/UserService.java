@@ -31,6 +31,8 @@ public interface UserService {
 
     ActionResponse deleteUserGroup(String groupId);
 
+    UserGroup getUserGroup(String groupId);
+
     Invite invitationOrgUser(Invite var1);
 
 }
