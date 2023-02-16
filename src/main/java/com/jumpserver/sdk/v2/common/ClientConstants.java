@@ -65,4 +65,6 @@ public final class ClientConstants {
 
     public static final String REMOTE_APP_CATEGORY = BASE_URL + "/applications/applications/?&category={category}";
 
+    public static final String REMOTE_APP_CREATE = BASE_URL + "/applications/applications/?type={type}";
+
 }

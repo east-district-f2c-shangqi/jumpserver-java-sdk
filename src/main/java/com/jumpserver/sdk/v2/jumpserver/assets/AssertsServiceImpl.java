@@ -280,4 +280,13 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
         String url = ClientConstants.REMOTE_APP_ID.replace("{id}", appId);
         return get(RemoteApp.class, url).execute();
     }
+
+    @Override
+    public RemoteApp createRemoteApp(RemoteApp remoteApp) {
+        checkNotNull(remoteApp);
+        String url = ClientConstants.REMOTE_APP_CREATE.replace("{type}", remoteApp.getType());
+        return post(RemoteApp.class, url)
+                .json(JSON.toJSONString(remoteApp))
+                .execute();
+    }
 }

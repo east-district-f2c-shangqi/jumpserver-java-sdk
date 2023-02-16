@@ -30,7 +30,7 @@ public class RemoteApp {
     private String date_updated;
     private String created_by;
     private String comment;
-    private Object domain;
+    private String domain;
     private String org_id;
     private String org_name;
 
@@ -122,11 +122,11 @@ public class RemoteApp {
         this.comment = comment;
     }
 
-    public Object getDomain() {
+    public String getDomain() {
         return domain;
     }
 
-    public void setDomain(Object domain) {
+    public void setDomain(String domain) {
         this.domain = domain;
     }
 
@@ -160,6 +160,14 @@ public class RemoteApp {
         private String path;
         private String chrome_target;
         private String chrome_username;
+
+        private Integer port;
+
+        private String host;
+
+        private String database;
+
+        private String version;
 
         public AssetInfoBean getAsset_info() {
             return asset_info;
@@ -225,6 +233,48 @@ public class RemoteApp {
             public void setHostname(String hostname) {
                 this.hostname = hostname;
             }
+        }
+
+        public Integer getPort() {
+            return port;
+        }
+
+        public void setPort(Integer port) {
+            this.port = port;
+        }
+
+        public String getHost() {
+            return host;
+        }
+
+        public void setHost(String host) {
+            this.host = host;
+        }
+
+        public String getDatabase() {
+            return database;
+        }
+
+        public void setDatabase(String database) {
+            this.database = database;
+        }
+
+        public String getVersion() {
+            return version;
+        }
+
+        public void setVersion(String version) {
+            this.version = version;
+        }
+
+        public AttrsBean() {
+        }
+
+        public AttrsBean(Integer port, String host, String database, String version) {
+            this.port = port;
+            this.host = host;
+            this.database = database;
+            this.version = version;
         }
     }
 }

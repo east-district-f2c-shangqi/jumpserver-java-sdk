@@ -89,5 +89,7 @@ public interface AssertsService {
 
     RemoteApp getRemoteApp(String appId);
 
+    RemoteApp createRemoteApp(RemoteApp remoteApp);
+
 
 }
