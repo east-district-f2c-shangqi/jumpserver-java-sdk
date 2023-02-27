@@ -128,6 +128,12 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     }
 
     @Override
+    public List<Asset> listByHostname(String hostname) {
+        String url = ClientConstants.ASSETS_BY_HOSTNAME.replace("{hostname}", hostname);
+        return get(Asset.class, url).executeList();
+    }
+
+    @Override
     public Asset get(String assetId) {
         checkNotNull(assetId);
         return get(Asset.class, ClientConstants.ASSETS, assetId, "/").execute();

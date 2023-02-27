@@ -21,6 +21,14 @@ public class PermissionServiceImpl extends BaseJmsService implements PermissionS
     }
 
     @Override
+    public List<AssetsPermission> listByHostnameAndUsername(String hostname, String username) {
+        String url = ClientConstants.ASSET_PERMISSIONS_BY_HOSTNAME_AND_USERNAME
+                .replace("{hostname}", hostname)
+                .replace("{username}", username);
+        return get(AssetsPermission.class, url).executeList();
+    }
+
+    @Override
     public AssetsPermission getAssetsPermission(String permissionId) {
         checkNotNull(permissionId);
         return get(AssetsPermission.class, ClientConstants.ASSET_PERMISSIONS, permissionId, "/").execute();

@@ -41,6 +41,8 @@ public interface AssertsService {
     //资产
     List<Asset> list();
 
+    List<Asset> listByHostname(String hostname);
+
     Asset get(String assetId);
 
     Asset update(Asset asset);

@@ -13,6 +13,8 @@ public interface PermissionService {
 
     List<AssetsPermission> list();
 
+    List<AssetsPermission> listByHostnameAndUsername(String hostname, String username);
+
     AssetsPermission getAssetsPermission(String permissionId);
 
     AssetsPermission updateAssetsPermission(AssetsPermission assetspermission);
