@@ -41,6 +41,7 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
         return assetList;
     }
 
+
     @Override
     public ActionResponse deleteAssetsNode(String nodeId) {
         checkNotNull(nodeId);
@@ -130,6 +131,12 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     @Override
     public List<Asset> listByHostname(String hostname) {
         String url = ClientConstants.ASSETS_BY_HOSTNAME.replace("{hostname}", hostname);
+        return get(Asset.class, url).executeList();
+    }
+
+    @Override
+    public List<Asset> listByIp(String ip) {
+        String url = ClientConstants.ASSETS_BY_IP.replace("{ip}", ip);
         return get(Asset.class, url).executeList();
     }
 

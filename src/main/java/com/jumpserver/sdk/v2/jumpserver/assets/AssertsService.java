@@ -43,6 +43,8 @@ public interface AssertsService {
 
     List<Asset> listByHostname(String hostname);
 
+    List<Asset> listByIp(String ip);
+
     Asset get(String assetId);
 
     Asset update(Asset asset);

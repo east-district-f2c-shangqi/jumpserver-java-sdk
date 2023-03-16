@@ -25,6 +25,7 @@ public final class ClientConstants {
     // nodes
     public static final String ASSETS = BASE_URL + "/assets/assets/";
     public static final String ASSETS_BY_HOSTNAME = BASE_URL + "/assets/assets/?hostname={hostname}";
+    public static final String ASSETS_BY_IP = BASE_URL + "/assets/assets/?ip={ip}";
 
     public static final String ORG = BASE_URL + "/orgs/orgs/";
     public static final String ORGADMINS = BASE_URL + "/orgs/orgs/{org_id}/membership/admins/";
