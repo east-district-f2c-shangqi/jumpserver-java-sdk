@@ -82,6 +82,8 @@ public class Asset {
 
     private String[] protocols;
 
+    private String[] nodes_display;
+
     public String[] getProtocols() {
         return protocols;
     }
@@ -393,5 +395,13 @@ public class Asset {
     @Deprecated
     public void setProtocol(String protocol) {
         this.protocol = protocol;
+    }
+
+    public String[] getNodes_display() {
+        return nodes_display;
+    }
+
+    public void setNodes_display(String[] nodes_display) {
+        this.nodes_display = nodes_display;
     }
 }
