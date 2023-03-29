@@ -17,6 +17,7 @@ public final class ClientConstants {
     public static final String USERS = BASE_URL + "/users/users/";
     public static final String USERGROUPS = BASE_URL + "/users/groups/";
     public static final String USER_PASSWORD_RESET = BASE_URL + "/users/users/{id}/password/";
+    public static final String USER_SUGGESTIONS = BASE_URL + "/users/users/suggestions/?search={param}";
 
     // assets
     public static final String NODES = BASE_URL + "/assets/nodes/";

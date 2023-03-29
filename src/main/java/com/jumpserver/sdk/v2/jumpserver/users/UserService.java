@@ -13,6 +13,8 @@ public interface UserService {
 
     User get(String userId);
 
+    List<User>  searchByParam(String param);
+
     List<User> search(String userName);
 
     User update(User user);

@@ -28,6 +28,13 @@ public class UserServiceImpl extends BaseJmsService implements UserService {
     }
 
     @Override
+    public List<User>  searchByParam(String param) {
+        checkNotNull(param);
+        String url = ClientConstants.USER_SUGGESTIONS.replace("{param}", param);
+        return get(User.class, uri(url)).executeList();
+    }
+
+    @Override
     public List<User> search(String searchName) {
         checkNotNull(searchName);
         String url = ClientConstants.USERS + "?search=" + searchName;
