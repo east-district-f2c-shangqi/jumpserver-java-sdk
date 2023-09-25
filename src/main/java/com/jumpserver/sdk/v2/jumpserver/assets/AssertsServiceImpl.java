@@ -45,7 +45,8 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     @Override
     public ActionResponse deleteAssetsNode(String nodeId) {
         checkNotNull(nodeId);
-        return deleteWithResponse(ClientConstants.NODES_ASSETS, nodeId, "/").execute();
+        String url = ClientConstants.NODES_ASSETS.replace("{id}", nodeId);
+        return deleteWithResponse(url).execute();
     }
 
     @Override
