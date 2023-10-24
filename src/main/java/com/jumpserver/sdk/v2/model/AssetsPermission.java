@@ -1,37 +1,45 @@
 package com.jumpserver.sdk.v2.model;
 
+import java.util.List;
+
 public class AssetsPermission {
     private String id;
 
     private String name;
 
-    private Boolean is_active;
+    private String[] user_groups;
 
-    private String date_expired;
+    private String[] users;
+
+    private String[] assets;
+
+    private String[] nodes;
+
+    private String[] accounts;
 
     private String created_by;
+
+    private String comment;
+
+    private String org_id;
+
+    private String org_name;
+
+    private Boolean is_active;
+
+    private Boolean is_valid;
+
+    private Boolean is_expired;
+
+    private Boolean from_ticket;
+
+    private String date_expired;
 
     private String date_created;
 
     private String date_start;
 
-    private String comment;
-
-    private String[] user_groups;
-
-    private String[] users;
-
-    private String[] users_display;
-
-    private String[] nodes;
-
-    private String[] assets;
-
-    private String[] system_users;
-
-    private String[] actions;
-
-    private String[] assets_display;
+    private List<BaseDto> actions;
 
     public String getId() {
         return id;
@@ -47,54 +55,6 @@ public class AssetsPermission {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Boolean getIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(Boolean is_active) {
-        this.is_active = is_active;
-    }
-
-    public String getDate_expired() {
-        return date_expired;
-    }
-
-    public void setDate_expired(String date_expired) {
-        this.date_expired = date_expired;
-    }
-
-    public String getCreated_by() {
-        return created_by;
-    }
-
-    public void setCreated_by(String created_by) {
-        this.created_by = created_by;
-    }
-
-    public String getDate_created() {
-        return date_created;
-    }
-
-    public void setDate_created(String date_created) {
-        this.date_created = date_created;
-    }
-
-    public String getDate_start() {
-        return date_start;
-    }
-
-    public void setDate_start(String date_start) {
-        this.date_start = date_start;
-    }
-
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     public String[] getUser_groups() {
@@ -113,12 +73,12 @@ public class AssetsPermission {
         this.users = users;
     }
 
-    public String[] getUsers_display() {
-        return users_display;
+    public String[] getAssets() {
+        return assets;
     }
 
-    public void setUsers_display(String[] users_display) {
-        this.users_display = users_display;
+    public void setAssets(String[] assets) {
+        this.assets = assets;
     }
 
     public String[] getNodes() {
@@ -129,35 +89,107 @@ public class AssetsPermission {
         this.nodes = nodes;
     }
 
-    public String[] getAssets() {
-        return assets;
+    public String[] getAccounts() {
+        return accounts;
     }
 
-    public void setAssets(String[] assets) {
-        this.assets = assets;
+    public void setAccounts(String[] accounts) {
+        this.accounts = accounts;
     }
 
-    public String[] getSystem_users() {
-        return system_users;
+    public String getCreated_by() {
+        return created_by;
     }
 
-    public void setSystem_users(String[] system_users) {
-        this.system_users = system_users;
+    public void setCreated_by(String created_by) {
+        this.created_by = created_by;
     }
 
-    public String[] getActions() {
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getOrg_id() {
+        return org_id;
+    }
+
+    public void setOrg_id(String org_id) {
+        this.org_id = org_id;
+    }
+
+    public String getOrg_name() {
+        return org_name;
+    }
+
+    public void setOrg_name(String org_name) {
+        this.org_name = org_name;
+    }
+
+    public Boolean getIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(Boolean is_active) {
+        this.is_active = is_active;
+    }
+
+    public Boolean getIs_valid() {
+        return is_valid;
+    }
+
+    public void setIs_valid(Boolean is_valid) {
+        this.is_valid = is_valid;
+    }
+
+    public Boolean getIs_expired() {
+        return is_expired;
+    }
+
+    public void setIs_expired(Boolean is_expired) {
+        this.is_expired = is_expired;
+    }
+
+    public Boolean getFrom_ticket() {
+        return from_ticket;
+    }
+
+    public void setFrom_ticket(Boolean from_ticket) {
+        this.from_ticket = from_ticket;
+    }
+
+    public String getDate_expired() {
+        return date_expired;
+    }
+
+    public void setDate_expired(String date_expired) {
+        this.date_expired = date_expired;
+    }
+
+    public String getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(String date_created) {
+        this.date_created = date_created;
+    }
+
+    public String getDate_start() {
+        return date_start;
+    }
+
+    public void setDate_start(String date_start) {
+        this.date_start = date_start;
+    }
+
+    public List<BaseDto> getActions() {
         return actions;
     }
 
-    public void setActions(String[] actions) {
+    public void setActions(List<BaseDto> actions) {
         this.actions = actions;
-    }
-
-    public String[] getAssets_display() {
-        return assets_display;
-    }
-
-    public void setAssets_display(String[] assets_display) {
-        this.assets_display = assets_display;
     }
 }

@@ -4,6 +4,8 @@ import com.jumpserver.sdk.v2.builder.ClientBuilder;
 import com.jumpserver.sdk.v2.builder.JMSClient;
 import com.jumpserver.sdk.v2.common.ClientConstants;
 import com.jumpserver.sdk.v2.httpclient.build.Config;
+import com.jumpserver.sdk.v2.model.Asset;
+import com.jumpserver.sdk.v2.model.AssetsNode;
 import com.jumpserver.sdk.v2.model.UserGroup;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Before;
@@ -66,7 +68,7 @@ public class JMSClientTest {
         JMSClient client = new ClientBuilder()
                 .endpoint(endPoint)
                 .credentials(keyId, keySecret)
-                .header(ClientConstants.X_JMS_ORG, "2107470f-1107-4352-84fc-8de6ef3b7fe8")
+                .header(ClientConstants.X_JMS_ORG, "bb42c0c0-738a-48e9-b404-89b8eb63773f")
                 .withConfig(Config.newConfig().withConnectionTimeout(10000).withReadTimeout(10000)).authenticate();
         System.out.println(client.getHeaders());
         List<UserGroup> userGroups = client.users().userGroups();
@@ -77,5 +79,21 @@ public class JMSClientTest {
         System.out.println(client.getHeaders());
         List<UserGroup> userGroups2 = client.users().userGroups();
         userGroups2.stream().forEach(u -> System.out.println(u.getName()));
+    }
+
+
+    @Test
+    public void getNodeAssert() {
+        JMSClient client = new ClientBuilder()
+                .endpoint(endPoint)
+                .credentials(keyId, keySecret)
+                .header(ClientConstants.X_JMS_ORG, "00000000-0000-0000-0000-000000000004")
+                .withConfig(Config.newConfig().withConnectionTimeout(10000).withReadTimeout(10000)).authenticate();
+        System.out.println(client.getHeaders());
+        List<Asset> assetsByNodeId = client.assets().getAssetsByNodeId("03a3b822-d6e3-4237-b15f-6ffd3a9594be");
+        assetsByNodeId.stream().forEach(u -> System.out.println(u.getNodes()));
+
+        //切换组织
+
     }
 }

@@ -27,6 +27,11 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     }
 
     @Override
+    public List<Asset> listAssetsByCategory(String param) {
+        return get(Asset.class, uri(ClientConstants.CATEGORY.replace("{category}",param))).executeList();
+    }
+
+    @Override
     public AssetsNode getAssetsNode(String nodeId) {
         checkNotNull(nodeId);
         return get(AssetsNode.class, ClientConstants.NODES, nodeId, "/").execute();
@@ -130,14 +135,14 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     }
 
     @Override
-    public List<Asset> listByHostname(String hostname) {
-        String url = ClientConstants.ASSETS_BY_HOSTNAME.replace("{hostname}", hostname);
+    public List<Asset> listByHostname(String name) {
+        String url = ClientConstants.ASSETS_BY_NAME.replace("{name}", name);
         return get(Asset.class, url).executeList();
     }
 
     @Override
-    public List<Asset> listByIp(String ip) {
-        String url = ClientConstants.ASSETS_BY_IP.replace("{ip}", ip);
+    public List<Asset> listByIp(String address) {
+        String url = ClientConstants.ASSETS_BY_ADDRESS.replace("{address}", address);
         return get(Asset.class, url).executeList();
     }
 

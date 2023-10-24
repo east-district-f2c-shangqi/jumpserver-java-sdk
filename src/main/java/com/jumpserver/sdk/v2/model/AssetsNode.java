@@ -21,7 +21,8 @@ public class AssetsNode {
 
     private String[] nodes;
 
-    private String name;
+    private String parent_id;
+
 
     public String[] getNodes() {
         return nodes;
@@ -103,11 +104,11 @@ public class AssetsNode {
         this.assets_amount = assets_amount;
     }
 
-    public String getName() {
-        return name;
+    public String getParent_id() {
+        return parent_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setParent_id(String parent_id) {
+        this.parent_id = parent_id;
     }
 }

@@ -24,9 +24,9 @@ public final class ClientConstants {
     public static final String NODES_ASSETS = BASE_URL + "/assets/nodes/{id}/assets/";
 
     // nodes
-    public static final String ASSETS = BASE_URL + "/assets/assets/";
-    public static final String ASSETS_BY_HOSTNAME = BASE_URL + "/assets/assets/?hostname={hostname}";
-    public static final String ASSETS_BY_IP = BASE_URL + "/assets/assets/?ip={ip}";
+    public static final String ASSETS = BASE_URL + "/assets/hosts/";
+    public static final String ASSETS_BY_NAME = BASE_URL + "/assets/assets/?name={name}";
+    public static final String ASSETS_BY_ADDRESS = BASE_URL + "/assets/assets/?address={address}";
 
     public static final String ORG = BASE_URL + "/orgs/orgs/";
     public static final String ORGADMINS = BASE_URL + "/orgs/orgs/{org_id}/membership/admins/";
@@ -71,4 +71,24 @@ public final class ClientConstants {
 
     public static final String REMOTE_APP_CREATE = BASE_URL + "/applications/applications/?type={type}";
 
+
+
+
+    // role
+    public static final String ROLES = BASE_URL + "/rbac/roles/";
+    // tickets
+    public static final String TICKETS = BASE_URL + "/tickets/tickets/";
+
+    // accounts
+    public static final String ACCOUNTS = BASE_URL + "/accounts/accounts/";
+
+    // account templates
+    public static final String ACCOUNT_TEMPLATES = BASE_URL + "/accounts/account-templates/";
+
+    // platforms
+    public static final String PLATFORMS = BASE_URL + "/assets/platforms/?category=host";
+    public static final String SEARCH_PLATFORM_BY_NAME = BASE_URL + "/assets/platforms/?category=host&name={name}";
+
+
+    public static final String CATEGORY = BASE_URL + "/assets/{category}/";
 }

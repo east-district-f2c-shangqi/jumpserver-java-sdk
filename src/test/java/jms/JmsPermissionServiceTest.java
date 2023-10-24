@@ -15,7 +15,7 @@ public class JmsPermissionServiceTest extends CommonBeforeTest{
     @Test
     public void addAssetsPermission() {
         AssetsPermission object = new AssetsPermission();
-        object.setSystem_users(new String[]{"6ca16c2b-77ec-4757-a100-ddbde4c1a8c4"});
+//        object.setst(new String[]{"6ca16c2b-77ec-4757-a100-ddbde4c1a8c4"});
         object.setName("API授权规则");
         AssetsPermission objectBack = os.permissions().createAssetsPermission(object);
         System.out.println(objectBack.getId());
