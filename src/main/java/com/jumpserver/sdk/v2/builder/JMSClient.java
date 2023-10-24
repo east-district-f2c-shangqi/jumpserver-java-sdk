@@ -1,9 +1,12 @@
 package com.jumpserver.sdk.v2.builder;
 
+import com.jumpserver.sdk.v2.jumpserver.accounts.AccountsService;
 import com.jumpserver.sdk.v2.jumpserver.assets.AssertsService;
 import com.jumpserver.sdk.v2.jumpserver.luna.LunaService;
 import com.jumpserver.sdk.v2.jumpserver.org.OrgService;
 import com.jumpserver.sdk.v2.jumpserver.permissions.PermissionService;
+import com.jumpserver.sdk.v2.jumpserver.role.RoleService;
+import com.jumpserver.sdk.v2.jumpserver.tickets.TicketsService;
 import com.jumpserver.sdk.v2.jumpserver.users.UserService;
 
 import java.util.Map;
@@ -59,4 +62,19 @@ public interface JMSClient {
      */
     Map getHeaders();
 
+    /**
+     * 角色信息
+     * @return
+     */
+    RoleService roles();
+
+    /**
+     * 订单信息
+     */
+    TicketsService tickets();
+
+    /**
+     * 账户信息
+     */
+    AccountsService accounts();
 }

@@ -3,10 +3,13 @@ package com.jumpserver.sdk.v2.builder;
 import com.alibaba.fastjson.JSONObject;
 import com.jumpserver.sdk.v2.api.Apis;
 import com.jumpserver.sdk.v2.httpclient.build.Config;
+import com.jumpserver.sdk.v2.jumpserver.accounts.AccountsService;
 import com.jumpserver.sdk.v2.jumpserver.assets.AssertsService;
 import com.jumpserver.sdk.v2.jumpserver.luna.LunaService;
 import com.jumpserver.sdk.v2.jumpserver.org.OrgService;
 import com.jumpserver.sdk.v2.jumpserver.permissions.PermissionService;
+import com.jumpserver.sdk.v2.jumpserver.role.RoleService;
+import com.jumpserver.sdk.v2.jumpserver.tickets.TicketsService;
 import com.jumpserver.sdk.v2.jumpserver.users.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -87,6 +90,21 @@ public class JMSClientImpl implements JMSClient {
     @Override
     public Map getHeaders() {
         return this.headers;
+    }
+
+    @Override
+    public RoleService roles() {
+        return Apis.getRoleService();
+    }
+
+    @Override
+    public TicketsService tickets() {
+        return Apis.getTicketsService();
+    }
+
+    @Override
+    public AccountsService accounts() {
+        return Apis.getAccountsService();
     }
 }
 
