@@ -154,19 +154,19 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     @Override
     public ActionResponse delete(String assetId) {
         checkNotNull(assetId);
-        return deleteWithResponse(ClientConstants.ASSETS, assetId, "/").execute();
+        return deleteWithResponse(ClientConstants.ASSETS_CREATE, assetId, "/").execute();
     }
 
     @Override
     public Asset update(Asset asset) {
         checkNotNull(asset);
-        return patch(Asset.class, ClientConstants.ASSETS, asset.getId(), "/").json(JSON.toJSONString(asset)).execute();
+        return patch(Asset.class, ClientConstants.ASSETS_CREATE, asset.getId(), "/").json(JSON.toJSONString(asset)).execute();
     }
 
     @Override
     public Asset create(Asset asset) {
         checkNotNull(asset);
-        return post(Asset.class, uri(ClientConstants.ASSETS))
+        return post(Asset.class, uri(ClientConstants.ASSETS_CREATE))
                 .json(JSON.toJSONString(asset))
                 .execute();
     }
