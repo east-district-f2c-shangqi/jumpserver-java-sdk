@@ -24,7 +24,7 @@ public final class ClientConstants {
     public static final String NODES_ASSETS = BASE_URL + "/assets/nodes/{id}/assets/";
 
     // nodes
-    public static final String ASSETS = BASE_URL + "/assets/hosts/";
+    public static final String ASSETS = BASE_URL + "/assets/assets/";
     public static final String ASSETS_BY_NAME = BASE_URL + "/assets/assets/?name={name}";
     public static final String ASSETS_BY_ADDRESS = BASE_URL + "/assets/assets/?address={address}";
 
