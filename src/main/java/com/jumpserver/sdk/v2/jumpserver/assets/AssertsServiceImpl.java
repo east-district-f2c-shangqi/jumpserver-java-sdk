@@ -1,7 +1,6 @@
 package com.jumpserver.sdk.v2.jumpserver.assets;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.base.Preconditions;
 import com.jumpserver.sdk.v2.common.ActionResponse;
 import com.jumpserver.sdk.v2.common.BaseJmsService;
 import com.jumpserver.sdk.v2.common.ClientConstants;
@@ -29,9 +28,8 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
 
     @Override
     public List<Asset> listAssetsByCategory(String param) {
-        AssetsPage page = get(AssetsPage.class, uri(ClientConstants.CATEGORY.replace("{category}",param)+  "?limit=1&offset=0")).execute();
+        AssetsPage page = get(AssetsPage.class, uri(ClientConstants.CATEGORY.replace("{category}",param)+  "?limit=100&offset=0")).execute();
         return assetsByChild(page.getNext(),page.getResults());
-//        return get(Asset.class, uri(ClientConstants.CATEGORY.replace("{category}",param))).executeList();
     }
 
     @Override
@@ -133,7 +131,7 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     //资产
     @Override
     public List<Asset> list() {
-        AssetsPage page = get(AssetsPage.class, ClientConstants.ASSETS + "?limit=1&offset=0").execute();
+        AssetsPage page = get(AssetsPage.class, ClientConstants.ASSETS + "?limit=100&offset=0").execute();
         return assetsByChild(page.getNext(),page.getResults());
     }
 
