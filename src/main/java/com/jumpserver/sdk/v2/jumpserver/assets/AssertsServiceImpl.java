@@ -6,6 +6,7 @@ import com.jumpserver.sdk.v2.common.ActionResponse;
 import com.jumpserver.sdk.v2.common.BaseJmsService;
 import com.jumpserver.sdk.v2.common.ClientConstants;
 import com.jumpserver.sdk.v2.model.*;
+import org.apache.commons.lang.StringUtils;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +29,9 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
 
     @Override
     public List<Asset> listAssetsByCategory(String param) {
-        return get(Asset.class, uri(ClientConstants.CATEGORY.replace("{category}",param))).executeList();
+        AssetsPage page = get(AssetsPage.class, uri(ClientConstants.CATEGORY.replace("{category}",param)+  "?limit=1&offset=0")).execute();
+        return assetsByChild(page.getNext(),page.getResults());
+//        return get(Asset.class, uri(ClientConstants.CATEGORY.replace("{category}",param))).executeList();
     }
 
     @Override
@@ -130,8 +133,19 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     //资产
     @Override
     public List<Asset> list() {
-        return get(Asset.class, ClientConstants.ASSETS).executeList();
+        AssetsPage page = get(AssetsPage.class, ClientConstants.ASSETS + "?limit=1&offset=0").execute();
+        return assetsByChild(page.getNext(),page.getResults());
     }
+
+    private List<Asset> assetsByChild(String path,List<Asset> assetList) {
+        AssetsPage page = get(AssetsPage.class, "/api/"+path.split("/api/")[1]).execute();
+        assetList.addAll(page.getResults());
+        if(StringUtils.isNotBlank(page.getNext())){
+            assetsByChild(page.getNext(),assetList);
+        }
+        return assetList;
+    }
+
 
     @Override
     public List<Asset> listByHostname(String name) {
