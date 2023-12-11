@@ -136,11 +136,12 @@ public class AssertsServiceImpl extends BaseJmsService implements AssertsService
     }
 
     private List<Asset> assetsByChild(String path,List<Asset> assetList) {
+        if(StringUtils.isBlank(path)){
+            return assetList;
+        }
         AssetsPage page = get(AssetsPage.class, "/api/"+path.split("/api/")[1]).execute();
         assetList.addAll(page.getResults());
-        if(StringUtils.isNotBlank(page.getNext())){
-            assetsByChild(page.getNext(),assetList);
-        }
+        assetsByChild(page.getNext(),assetList);
         return assetList;
     }
 
